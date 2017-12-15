@@ -7,13 +7,3 @@ Accepts all incoming traffic from clients outside of the Ocomis network (e.g. we
 ## Tech Stack
 
 * HAProxy
-
-## Docker
-
-### Build
-
-`docker build -t blutner/ocomis-haproxy:latest .`
-
-### Publish
-
-`docker push blutner/ocomis-haproxy:latest`
