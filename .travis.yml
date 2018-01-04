@@ -1,0 +1,18 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - "8"
+
+services:
+  - docker
+
+script:
+  - set -e
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker build -t "blutner/ocomis-haproxy:latest" .
+  - docker tag "blutner/ocomis-haproxy:latest" "blutner/ocomis-haproxy:$TRAVIS_COMMIT"
+  - docker push "blutner/ocomis-haproxy:$TRAVIS_COMMIT"
+  - docker push "blutner/ocomis-haproxy:latest"
+  - docker logout
